@@ -10,30 +10,31 @@
 </head>
 
 <body>
-    <div class="startBtn" id="startQuiz"><button>Start Quiz</button></div>
+    <div onclick="hideBtn(this)" class="startBtn" id="startQuiz"><button>Start Quiz</button></div>
 
     <header>
-        <h1 class="time">TIME LEFT</h1>
+        <h1 class="time container topLeft">TIME LEFT</h1>
     </header>
-    
-    <header>
-        <h2 class="highscores">HIGHSCORES</h1>
-        </header>
 
     <main>
-    <div class="quizBox hide">
+    <div class="quizBox hide center">
         <header>
             <h3 id="title">Exquisite Quiz Application</h2>
-                <button id="one">Choices1</button><br>
-                <button id="two">Choices2</button><br>
-                <button  id="three">Choices3</button><br>
-                <button id="four">Choices4</button><br>
+                <button id="one"></button><br>
+                <button id="two"></button><br>
+                <button id="three"></button><br>
+                <button id="four"></button><br>
         </header>
         </div>
-        <div class="initalInput hide">
+        <div class="initalInput hide center">
+            <h4>You have Finished The Quiz</h4><br>
             Inital Enter <input class="input" type="text">
             <button class="save"> SAVE </button>
         </div>
+
+        <div class="buttons hide">
+            <div class="show-highscore">
+            </div>
     </main>
     <script src="./js/questions.js"></script>
     <script src="./js/java.js"></script>

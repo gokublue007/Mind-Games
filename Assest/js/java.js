@@ -10,9 +10,8 @@ var index = 0;
 var initialInput = document.querySelector(".initalInput");
 var input = document.querySelector(".input");
 var saveBtn = document.querySelector(".save");
-
-
-
+var showHighscore = document.querySelector(".show-highscore");
+var highscores = [];
 var clockId = null
 var totalTimeRemaining = questions.length * 15
 
@@ -26,6 +25,10 @@ function startQuiz() {
     quizBox.classList.remove("hide");
     displayQuestions();
     clockId = setInterval(countDown, 1000);
+}
+
+function hideBtn(x) {
+    x.style.display = 'none';
 }
 
 function nextQuestion() {
@@ -58,6 +61,27 @@ function displayQuestions() {
     anwserThree.addEventListener("click", nextQuestion);
     anwserFour.addEventListener("click", nextQuestion);
 
+}
+
+
+if (localStorage.getItem("save")) {
+    highscores = JSON.parse(localStorage.getItem("save"));
+}
+
+function displayHighscore() {
+    showHighscore.innerHTML = "highscore <br>";
+    for (i = 0; i < highscores.length; i++) {
+        showHighscore.innerHTML =
+            showHighscore.innerHTML +
+            highscores[i].inital +
+            " - " +
+            highscores[i].score +
+            "<br>";
+    }
+    showHighscore.innerHTML =
+        showHighscore.innerHTML +
+        `<br><button class="restart">Replay Quiz</button>
+    <button class="quit">Quit Quiz</button>`;
 }
 
 
