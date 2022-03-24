@@ -1,0 +1,34 @@
+*{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: sans-serif;
+}
+
+.startBtn {
+    display: flex;
+    justify-content: center;
+    margin-top: 20%;
+
+}
+
+.time {
+    display: flex;
+    flex-direction: row-reverse;
+}
+
+.highscores {
+    display: flex;
+}
+
+.startBtn button{
+    font-size: 25px;
+    font-weight: 500;
+    color: #ffffff;
+    padding: 15px 30px;
+    outline: none;
+    border: none;
+    border-radius: 5px;
+    background: rgb(141, 5, 238);
+    cursor: pointer;
+}
