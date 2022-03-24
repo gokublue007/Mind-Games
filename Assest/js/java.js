@@ -1,20 +1,24 @@
+//This shows all of my element selectors
 var startBtn = document.querySelector("#startQuiz");
-var time = document.querySelector(".time")
-var quizBox = document.querySelector(".quizBox")
-var questionOne = document.querySelector("#title")
-var anwserOne = document.querySelector("#one")
-var anwserTwo = document.querySelector("#two")
-var anwserThree = document.querySelector("#three")
-var anwserFour = document.querySelector("#four")
+var time = document.querySelector(".time");
+var quizBox = document.querySelector(".quizBox");
+var questionOne = document.querySelector("#title");
+var anwserOne = document.querySelector("#one");
+var anwserTwo = document.querySelector("#two");
+var anwserThree = document.querySelector("#three");
+var anwserFour = document.querySelector("#four");
 var index = 0;
+var userScore = 0;
+var highscores = [];
+var showHighscore = document.querySelector(".show-highscore");
+var inital = document.querySelector(".inital");
 var initialInput = document.querySelector(".initalInput");
 var input = document.querySelector(".input");
 var saveBtn = document.querySelector(".save");
-var showHighscore = document.querySelector(".show-highscore");
-var highscores = [];
-var clockId = null
-var totalTimeRemaining = questions.length * 15
+var clockId = null;
+var totalTimeRemaining = questions.length * 15;
 
+//Creating Functions to Start the Quiz
 function countDown() {
     time.textContent = "Time Left: " + totalTimeRemaining;
     totalTimeRemaining = totalTimeRemaining - 1;
@@ -49,6 +53,7 @@ function nextQuestion() {
     
 }
 
+//Function to call next questions
 function displayQuestions() {
     questionOne.textContent = questions[index].question
     anwserOne.textContent = questions[index].options[0]
@@ -63,12 +68,13 @@ function displayQuestions() {
 
 }
 
-
-if (localStorage.getItem("save")) {
-    highscores = JSON.parse(localStorage.getItem("save"));
+//Getting local Storage to get highscores results
+if (localStorage.getItem("highscore")) {
+    highscores = JSON.parse(localStorage.getItem("highscore"));
 }
 
 function displayHighscore() {
+    var showHighscore = document.querySelector(".show-highscore");
     showHighscore.innerHTML = "highscore <br>";
     for (i = 0; i < highscores.length; i++) {
         showHighscore.innerHTML =
@@ -79,10 +85,23 @@ function displayHighscore() {
             "<br>";
     }
     showHighscore.innerHTML =
-        showHighscore.innerHTML +
-        `<br><button class="restart">Replay Quiz</button>
-    <button class="quit">Quit Quiz</button>`;
-}
+    showHighscore.innerHTML +
+    `<br><button class="restart">Replay Quiz</button>
+<button class="quit">Quit Quiz</button>`;}
 
+saveBtn.addEventListener("click", function () {
+    highscores.push({
+        inital: inital,
+        score: userScore,
+    });
+    localStorage.setItem("highscore", JSON.stringify(highscores));
+    var showResult = document.querySelector(".show-result");
+    showResult.classList.add("hide");
+    var buttons = document.querySelector(".buttons");
+    buttons.classList.remove("hide");
+    displayHighscore();
+});
 
+//Event Listener to start everything
 startBtn.addEventListener("click" , startQuiz);
+
