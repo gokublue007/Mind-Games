@@ -69,38 +69,7 @@ function displayQuestions() {
 }
 
 //Getting local Storage to get highscores results
-if (localStorage.getItem("highscore")) {
-    highscores = JSON.parse(localStorage.getItem("highscore"));
-}
 
-function displayHighscore() {
-    var showHighscore = document.querySelector(".show-highscore");
-    showHighscore.innerHTML = "highscore <br>";
-    for (i = 0; i < highscores.length; i++) {
-        showHighscore.innerHTML =
-            showHighscore.innerHTML +
-            highscores[i].inital +
-            " - " +
-            highscores[i].score +
-            "<br>";
-    }
-    showHighscore.innerHTML =
-    showHighscore.innerHTML +
-    `<br><button class="restart">Replay Quiz</button>
-<button class="quit">Quit Quiz</button>`;}
-
-saveBtn.addEventListener("click", function () {
-    highscores.push({
-        inital: inital,
-        score: userScore,
-    });
-    localStorage.setItem("highscore", JSON.stringify(highscores));
-    var showResult = document.querySelector(".show-result");
-    showResult.classList.add("hide");
-    var buttons = document.querySelector(".buttons");
-    buttons.classList.remove("hide");
-    displayHighscore();
-});
 
 //Event Listener to start everything
 startBtn.addEventListener("click" , startQuiz);
