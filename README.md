@@ -19,6 +19,6 @@ Taking a code quiz when I click the start button the timer starts and I am prese
 
 - Html
 - CSSs
-- Java
+- JavaScript
 
 [Back To The Top](#read-me-template)
